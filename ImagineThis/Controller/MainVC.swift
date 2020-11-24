@@ -9,7 +9,7 @@ import UIKit
 
 class MainVC: UIViewController {
 
-    lazy var backgroundImageView = UIImageView(image: UIImage(named: "background"))
+    lazy var backgroundImageView = BGImageView(frame: view.bounds)
     let buttonsStackView = UIStackView()
     let easyLevelButton = LevelButton(level: "easy")
     let normalLevelButton = LevelButton(level: "normal")
