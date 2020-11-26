@@ -17,7 +17,7 @@ class MainVC: UIViewController {
     
     // data model: categories + levels
     // collection view
-    // start button
+    let startButton = StartButton()
     
     
     override func viewDidLoad() {
@@ -27,13 +27,14 @@ class MainVC: UIViewController {
         configureButtonsStackView()
         // configure collection view
         layoutUI()
-        // handle start button
+        addActionToStartButton()
     }
     
     
     private func layoutUI() {
         view.addSubview(backgroundImageView)
         view.addSubview(buttonsStackView)
+        view.addSubview(startButton)
         
         let padding: CGFloat = 20
         
@@ -41,7 +42,13 @@ class MainVC: UIViewController {
             buttonsStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding * 4),
             buttonsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            buttonsStackView.heightAnchor.constraint(equalToConstant: 44)
+            buttonsStackView.heightAnchor.constraint(equalToConstant: 44),
+            
+            
+            startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding * 3),
+            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding * 3),
+            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding * 2),
+            startButton.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     
@@ -72,6 +79,18 @@ class MainVC: UIViewController {
         let buttons = buttonsStackView.arrangedSubviews as! [UIButton]
         buttons.forEach { $0.isSelected = false }
         sender.isSelected = true
+    }
+    
+    
+    @objc private func startButtonTapped(_ sender: UIButton) {
+        if let button = sender as? StartButton {
+            button.pulsate()
+        }
+    }
+
+    
+    private func addActionToStartButton() {
+        startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
     }
 }
 
