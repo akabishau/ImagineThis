@@ -11,9 +11,9 @@ class MainVC: UIViewController {
 
     lazy var backgroundImageView = BGImageView(frame: view.bounds)
     let buttonsStackView = UIStackView()
-    let easyLevelButton = LevelButton(level: "easy")
-    let normalLevelButton = LevelButton(level: "normal")
-    let hardLevelButton = LevelButton(level: "hard")
+    let easyLevelButton = LevelButton(level: .easy)
+    let normalLevelButton = LevelButton(level: .normal)
+    let hardLevelButton = LevelButton(level: .hard)
     
     // data model: categories + levels
     // collection view

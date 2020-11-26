@@ -15,6 +15,7 @@
 		5B08B7552566384D0086F4B5 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B08B7542566384D0086F4B5 /* LevelButton.swift */; };
 		5B338777256CC6CF00BF835E /* BGImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B338776256CC6CF00BF835E /* BGImageView.swift */; };
 		5B33877B256F27FC00BF835E /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33877A256F27FC00BF835E /* StartButton.swift */; };
+		5B33877F256F467400BF835E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33877E256F467400BF835E /* Level.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		5B08B7542566384D0086F4B5 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
 		5B338776256CC6CF00BF835E /* BGImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGImageView.swift; sourceTree = "<group>"; };
 		5B33877A256F27FC00BF835E /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
+		5B33877E256F467400BF835E /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		5B08B73125662D1A0086F4B5 /* ImagineThis */ = {
 			isa = PBXGroup;
 			children = (
+				5B33877D256F465600BF835E /* Model */,
 				5B08B752256638130086F4B5 /* View */,
 				5B08B74C25662EBF0086F4B5 /* Controller */,
 				5B08B74A25662EB40086F4B5 /* Support */,
@@ -103,6 +106,14 @@
 				5B33877A256F27FC00BF835E /* StartButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		5B33877D256F465600BF835E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B33877E256F467400BF835E /* Level.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B33877B256F27FC00BF835E /* StartButton.swift in Sources */,
+				5B33877F256F467400BF835E /* Level.swift in Sources */,
 				5B338777256CC6CF00BF835E /* BGImageView.swift in Sources */,
 				5B08B7552566384D0086F4B5 /* LevelButton.swift in Sources */,
 				5B08B73725662D1A0086F4B5 /* MainVC.swift in Sources */,
