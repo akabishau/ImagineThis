@@ -86,6 +86,11 @@ class MainVC: UIViewController {
         if let button = sender as? StartButton {
             button.pulsate()
         }
+        
+        let cardVC = CardsVC()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.navigationController?.pushViewController(cardVC, animated: true)
+        }
     }
 
     
