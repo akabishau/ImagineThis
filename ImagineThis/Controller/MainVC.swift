@@ -16,7 +16,7 @@ class MainVC: UIViewController {
     let hardLevelButton = LevelButton(level: .hard)
     
     // data model: categories + levels
-    // collection view
+    var collectionView: UICollectionView!
     let startButton = StartButton()
     
     
@@ -25,7 +25,7 @@ class MainVC: UIViewController {
         
         configureViewController()
         configureButtonsStackView()
-        // configure collection view
+        configureCollectionView()
         layoutUI()
         addActionToStartButton()
     }
@@ -34,6 +34,7 @@ class MainVC: UIViewController {
     private func layoutUI() {
         view.addSubview(backgroundImageView)
         view.addSubview(buttonsStackView)
+        view.addSubview(collectionView)
         view.addSubview(startButton)
         
         let padding: CGFloat = 20
@@ -44,6 +45,10 @@ class MainVC: UIViewController {
             buttonsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             buttonsStackView.heightAnchor.constraint(equalToConstant: 44),
             
+            collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding * 3),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding * 3),
@@ -96,6 +101,15 @@ class MainVC: UIViewController {
     
     private func addActionToStartButton() {
         startButton.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
+    }
+    
+    
+    private func configureCollectionView() {
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collectionView.backgroundColor = .systemPink
+        collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIndentifier)
     }
 }
 
