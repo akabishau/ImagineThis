@@ -18,6 +18,8 @@
 		5B33877F256F467400BF835E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33877E256F467400BF835E /* Level.swift */; };
 		5B338783256F4E5000BF835E /* CardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B338782256F4E5000BF835E /* CardsVC.swift */; };
 		5B33878725704D4B00BF835E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33878625704D4B00BF835E /* CategoryCell.swift */; };
+		5B33878B25708D7500BF835E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33878A25708D7500BF835E /* Category.swift */; };
+		5B33878E25708E3400BF835E /* WordsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33878D25708E3400BF835E /* WordsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		5B33877E256F467400BF835E /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		5B338782256F4E5000BF835E /* CardsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsVC.swift; sourceTree = "<group>"; };
 		5B33878625704D4B00BF835E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		5B33878A25708D7500BF835E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		5B33878D25708E3400BF835E /* WordsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				5B33877E256F467400BF835E /* Level.swift */,
+				5B33878A25708D7500BF835E /* Category.swift */,
+				5B33878D25708E3400BF835E /* WordsData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,6 +206,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B33877B256F27FC00BF835E /* StartButton.swift in Sources */,
+				5B33878E25708E3400BF835E /* WordsData.swift in Sources */,
+				5B33878B25708D7500BF835E /* Category.swift in Sources */,
 				5B33877F256F467400BF835E /* Level.swift in Sources */,
 				5B338777256CC6CF00BF835E /* BGImageView.swift in Sources */,
 				5B08B7552566384D0086F4B5 /* LevelButton.swift in Sources */,
