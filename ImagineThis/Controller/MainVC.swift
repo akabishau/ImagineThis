@@ -14,10 +14,14 @@ class MainVC: UIViewController {
     let easyLevelButton = LevelButton(level: .easy)
     let normalLevelButton = LevelButton(level: .normal)
     let hardLevelButton = LevelButton(level: .hard)
-    
-    // data model: categories + levels
-    var collectionView: UICollectionView!
     let startButton = StartButton()
+    
+    let categories = Category.allCases
+    
+    enum Section { case main }
+    
+    var collectionView: UICollectionView!
+    var datasource: UICollectionViewDiffableDataSource<Section, Category>!
     
     
     override func viewDidLoad() {
@@ -108,8 +112,10 @@ class MainVC: UIViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .systemPink
+        collectionView.backgroundColor = .clear
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIndentifier)
+        
+        configureDataSource()
     }
     
     
@@ -117,16 +123,34 @@ class MainVC: UIViewController {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        //item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        //section.orthogonalScrollingBehavior = .paging
+        section.orthogonalScrollingBehavior = .paging
         
         
         return UICollectionViewCompositionalLayout(section: section)
+    }
+    
+    
+    private func configureDataSource() {
+        
+        datasource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { (collectionView, indexPath, category) -> UICollectionViewCell? in
+            
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCell.reuseIndentifier, for: indexPath) as? CategoryCell else {
+                fatalError("Can't create new cell")
+            }
+            cell.imageView.image = category.image
+            return cell
+        })
+        
+        var initialSnapshot = NSDiffableDataSourceSnapshot<Section, Category>()
+        initialSnapshot.appendSections([.main])
+        initialSnapshot.appendItems(categories, toSection: .main)
+        
+        datasource.apply(initialSnapshot, animatingDifferences: false, completion: nil)
     }
 }
 

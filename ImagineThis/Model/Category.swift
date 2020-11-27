@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum Category: String {
+enum Category: String, CaseIterable {
     case horror
     case urban
     
