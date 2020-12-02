@@ -21,6 +21,7 @@
 		5B33878B25708D7500BF835E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33878A25708D7500BF835E /* Category.swift */; };
 		5B33878E25708E3400BF835E /* WordsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33878D25708E3400BF835E /* WordsData.swift */; };
 		5B3387922574834800BF835E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3387912574834800BF835E /* BackButton.swift */; };
+		5B33879625774ECB00BF835E /* SentenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33879525774ECB00BF835E /* SentenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		5B33878A25708D7500BF835E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5B33878D25708E3400BF835E /* WordsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsData.swift; sourceTree = "<group>"; };
 		5B3387912574834800BF835E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		5B33879525774ECB00BF835E /* SentenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		5B08B73125662D1A0086F4B5 /* ImagineThis */ = {
 			isa = PBXGroup;
 			children = (
+				5B33879425774E6F00BF835E /* Manager */,
 				5B33877D256F465600BF835E /* Model */,
 				5B08B752256638130086F4B5 /* View */,
 				5B08B74C25662EBF0086F4B5 /* Controller */,
@@ -137,6 +140,14 @@
 				5B33878625704D4B00BF835E /* CategoryCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		5B33879425774E6F00BF835E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				5B33879525774ECB00BF835E /* SentenceManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +231,7 @@
 				5B08B73325662D1A0086F4B5 /* AppDelegate.swift in Sources */,
 				5B338783256F4E5000BF835E /* CardsVC.swift in Sources */,
 				5B08B73525662D1A0086F4B5 /* SceneDelegate.swift in Sources */,
+				5B33879625774ECB00BF835E /* SentenceManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
