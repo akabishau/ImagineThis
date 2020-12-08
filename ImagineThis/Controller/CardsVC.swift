@@ -56,7 +56,8 @@ class CardsVC: UIViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 ) {
-            self.navigationController?.popViewController(animated: true)
+            //TODO: - confirm with the client removing navigation animation
+            self.navigationController?.popViewController(animated: false)
         }
     }
 }

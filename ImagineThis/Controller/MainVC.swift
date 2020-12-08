@@ -98,7 +98,8 @@ class MainVC: UIViewController {
         
         let cardVC = CardsVC()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.navigationController?.pushViewController(cardVC, animated: true)
+            //TODO: - confirm with the client removing navigation animation
+            self.navigationController?.pushViewController(cardVC, animated: false)
         }
     }
 
