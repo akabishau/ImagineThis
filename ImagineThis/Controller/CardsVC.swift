@@ -25,14 +25,8 @@ class CardsVC: UIViewController {
     // TODO: - make cards deck view to be child view controller
     private func setupCards() {
         let cardView = CardView()
-        cardDeckView.addSubview(cardView)
-        
-        NSLayoutConstraint.activate([
-            cardView.topAnchor.constraint(equalTo: cardDeckView.topAnchor, constant: 10),
-            cardView.bottomAnchor.constraint(equalTo: cardDeckView.bottomAnchor, constant: -10),
-            cardView.leadingAnchor.constraint(equalTo: cardDeckView.leadingAnchor, constant: 10),
-            cardView.trailingAnchor.constraint(equalTo: cardDeckView.trailingAnchor, constant: -10)
-        ])
+        cardDeckView.addSubview(cardView)        
+        cardView.fillSuperView(padding: .init(top: 10, left: 10, bottom: 10, right: 10))
     }
     
     private func layoutUI() {

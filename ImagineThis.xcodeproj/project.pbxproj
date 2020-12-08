@@ -23,6 +23,7 @@
 		5B3387922574834800BF835E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3387912574834800BF835E /* BackButton.swift */; };
 		5B33879625774ECB00BF835E /* SentenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33879525774ECB00BF835E /* SentenceManager.swift */; };
 		5B3387D2257FE8C700BF835E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3387D1257FE8C700BF835E /* CardView.swift */; };
+		5B3387D725800BBC00BF835E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3387D625800BBC00BF835E /* UIView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		5B3387912574834800BF835E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		5B33879525774ECB00BF835E /* SentenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceManager.swift; sourceTree = "<group>"; };
 		5B3387D1257FE8C700BF835E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5B3387D625800BBC00BF835E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		5B08B73125662D1A0086F4B5 /* ImagineThis */ = {
 			isa = PBXGroup;
 			children = (
+				5B3387D525800BA500BF835E /* Extension */,
 				5B33879425774E6F00BF835E /* Manager */,
 				5B33877D256F465600BF835E /* Model */,
 				5B08B752256638130086F4B5 /* View */,
@@ -153,6 +156,14 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		5B3387D525800BA500BF835E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5B3387D625800BBC00BF835E /* UIView+Ext.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,6 +235,7 @@
 			files = (
 				5B3387D2257FE8C700BF835E /* CardView.swift in Sources */,
 				5B33877B256F27FC00BF835E /* StartButton.swift in Sources */,
+				5B3387D725800BBC00BF835E /* UIView+Ext.swift in Sources */,
 				5B33878E25708E3400BF835E /* WordsData.swift in Sources */,
 				5B33878B25708D7500BF835E /* Category.swift in Sources */,
 				5B33877F256F467400BF835E /* Level.swift in Sources */,
