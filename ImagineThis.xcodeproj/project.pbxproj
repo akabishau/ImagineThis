@@ -22,6 +22,7 @@
 		5B33878E25708E3400BF835E /* WordsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33878D25708E3400BF835E /* WordsData.swift */; };
 		5B3387922574834800BF835E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3387912574834800BF835E /* BackButton.swift */; };
 		5B33879625774ECB00BF835E /* SentenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33879525774ECB00BF835E /* SentenceManager.swift */; };
+		5B3387D2257FE8C700BF835E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3387D1257FE8C700BF835E /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		5B33878D25708E3400BF835E /* WordsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsData.swift; sourceTree = "<group>"; };
 		5B3387912574834800BF835E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		5B33879525774ECB00BF835E /* SentenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceManager.swift; sourceTree = "<group>"; };
+		5B3387D1257FE8C700BF835E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				5B338776256CC6CF00BF835E /* BGImageView.swift */,
+				5B3387D1257FE8C700BF835E /* CardView.swift */,
 				5B33878525704D1F00BF835E /* Cells */,
 				5B08B7532566381C0086F4B5 /* Buttons */,
 			);
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B3387D2257FE8C700BF835E /* CardView.swift in Sources */,
 				5B33877B256F27FC00BF835E /* StartButton.swift in Sources */,
 				5B33878E25708E3400BF835E /* WordsData.swift in Sources */,
 				5B33878B25708D7500BF835E /* Category.swift in Sources */,
