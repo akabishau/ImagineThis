@@ -20,4 +20,17 @@ extension UIView {
             trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -padding.right)
         ])
     }
+    
+    
+    func centerInSuperView(size: CGSize) {
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        guard let superview = superview else { return }
+        NSLayoutConstraint.activate([
+            centerXAnchor.constraint(equalTo: superview.centerXAnchor),
+            centerYAnchor.constraint(equalTo: superview.centerYAnchor),
+            widthAnchor.constraint(equalTo: superview.widthAnchor, constant: size.width),
+            heightAnchor.constraint(equalTo: superview.heightAnchor, constant: size.height)
+        ])
+    }
 }
