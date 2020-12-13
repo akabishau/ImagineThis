@@ -34,14 +34,7 @@ class CardView: UIView {
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.image = UIImage(named: "card")
         backgroundImageView.clipsToBounds = true
-        
-        NSLayoutConstraint.activate([
-            backgroundImageView.topAnchor.constraint(equalTo: topAnchor),
-            backgroundImageView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            backgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            backgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ])
-        
+        backgroundImageView.fillSuperView()
     }
     
     
@@ -49,7 +42,7 @@ class CardView: UIView {
         addSubview(sentenceLabel)
         sentenceLabel.translatesAutoresizingMaskIntoConstraints = false
         sentenceLabel.text = "Some random text"
-        
+        sentenceLabel.backgroundColor = .systemTeal
         NSLayoutConstraint.activate([
             sentenceLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             sentenceLabel.centerYAnchor.constraint(equalTo: centerYAnchor)

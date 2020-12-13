@@ -10,7 +10,7 @@ import UIKit
 class CardsVC: UIViewController {
 
     lazy var backgroundImageView = BGImageView(frame: view.bounds)
-    let cardDeckView = UIView()
+    let containerView = UIView()
     let grassImageView = UIImageView(image: UIImage(named: "grass"))
     let backButton = BackButton(frame: .zero)
     
@@ -19,25 +19,20 @@ class CardsVC: UIViewController {
         super.viewDidLoad()
         layoutUI()
         addActionToBackButton()
-        setupCards()
+        add(childVC: CardsDeckVC(), to: containerView)
     }
     
-    // TODO: - make cards deck view to be child view controller
-    private func setupCards() {
-        let cardView = CardView()
-        cardDeckView.addSubview(cardView)        
-        cardView.fillSuperView(padding: .init(top: 10, left: 10, bottom: 10, right: 10))
-    }
     
     private func layoutUI() {
         view.addSubview(backgroundImageView)
-        view.addSubview(cardDeckView)
-        cardDeckView.translatesAutoresizingMaskIntoConstraints = false
-        cardDeckView.backgroundColor = .systemPink
+        view.addSubview(containerView)
         view.addSubview(grassImageView)
         view.addSubview(backButton)
         
         grassImageView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.backgroundColor = .systemPink
+        
         
         NSLayoutConstraint.activate([
             
@@ -46,10 +41,10 @@ class CardsVC: UIViewController {
             grassImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             grassImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             
-            cardDeckView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            cardDeckView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            cardDeckView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            cardDeckView.heightAnchor.constraint(equalToConstant: 150),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            containerView.heightAnchor.constraint(equalToConstant: 150),
             
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
@@ -74,5 +69,13 @@ class CardsVC: UIViewController {
             //TODO: - confirm with the client removing navigation animation
             self.navigationController?.popViewController(animated: false)
         }
+    }
+    
+    
+    func add(childVC: UIViewController, to containerView: UIView) {
+        addChild(childVC)
+        containerView.addSubview(childVC.view)
+        childVC.view.frame = containerView.bounds
+        childVC.didMove(toParent: self)
     }
 }

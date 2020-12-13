@@ -13,6 +13,7 @@
 		5B08B73C25662D1F0086F4B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B08B73B25662D1F0086F4B5 /* Assets.xcassets */; };
 		5B08B73F25662D1F0086F4B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B08B73D25662D1F0086F4B5 /* LaunchScreen.storyboard */; };
 		5B08B7552566384D0086F4B5 /* LevelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B08B7542566384D0086F4B5 /* LevelButton.swift */; };
+		5B23B0ED2585850300080BF9 /* CardsDeckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B23B0EC2585850300080BF9 /* CardsDeckVC.swift */; };
 		5B338777256CC6CF00BF835E /* BGImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B338776256CC6CF00BF835E /* BGImageView.swift */; };
 		5B33877B256F27FC00BF835E /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33877A256F27FC00BF835E /* StartButton.swift */; };
 		5B33877F256F467400BF835E /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33877E256F467400BF835E /* Level.swift */; };
@@ -35,6 +36,7 @@
 		5B08B73E25662D1F0086F4B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B08B74025662D1F0086F4B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B08B7542566384D0086F4B5 /* LevelButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelButton.swift; sourceTree = "<group>"; };
+		5B23B0EC2585850300080BF9 /* CardsDeckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsDeckVC.swift; sourceTree = "<group>"; };
 		5B338776256CC6CF00BF835E /* BGImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BGImageView.swift; sourceTree = "<group>"; };
 		5B33877A256F27FC00BF835E /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
 		5B33877E256F467400BF835E /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				5B08B73625662D1A0086F4B5 /* MainVC.swift */,
 				5B338782256F4E5000BF835E /* CardsVC.swift */,
+				5B23B0EC2585850300080BF9 /* CardsDeckVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -112,8 +115,8 @@
 		5B08B752256638130086F4B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B338776256CC6CF00BF835E /* BGImageView.swift */,
 				5B3387D1257FE8C700BF835E /* CardView.swift */,
+				5B338776256CC6CF00BF835E /* BGImageView.swift */,
 				5B33878525704D1F00BF835E /* Cells */,
 				5B08B7532566381C0086F4B5 /* Buttons */,
 			);
@@ -242,6 +245,7 @@
 				5B338777256CC6CF00BF835E /* BGImageView.swift in Sources */,
 				5B08B7552566384D0086F4B5 /* LevelButton.swift in Sources */,
 				5B08B73725662D1A0086F4B5 /* MainVC.swift in Sources */,
+				5B23B0ED2585850300080BF9 /* CardsDeckVC.swift in Sources */,
 				5B33878725704D4B00BF835E /* CategoryCell.swift in Sources */,
 				5B3387922574834800BF835E /* BackButton.swift in Sources */,
 				5B08B73325662D1A0086F4B5 /* AppDelegate.swift in Sources */,
