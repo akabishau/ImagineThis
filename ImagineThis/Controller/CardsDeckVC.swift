@@ -9,22 +9,24 @@ import UIKit
 
 class CardsDeckVC: UIViewController {
     
-    let cardView = CardView()
+    var collectionView: UICollectionView!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupCards()
+        view.backgroundColor = .systemYellow
+        configureCollectionView()
     }
     
     
-    private func setupCards() {
-        view.addSubview(cardView)
-        cardView.fillSuperView()
-        //cardView.frame = view.bounds
+    private func configureCollectionView() {
         
-//        NSLayoutConstraint.activate([
-//
-//        ])
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout()) // view.bound - why it is not working?
+        print(collectionView.frame.height)
+        view.addSubview(collectionView)
+        collectionView.register(CardCell.self, forCellWithReuseIdentifier: CardCell.reuseIndentifier)
+        
+        collectionView.backgroundColor = .systemGray
+        collectionView.fillSuperView(padding: .init(top: 10, left: 10, bottom: 10, right: 10))
     }
 }
