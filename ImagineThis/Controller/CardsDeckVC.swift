@@ -14,7 +14,6 @@ class CardsDeckVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemYellow
         configureCollectionView()
         
         if let layout = collectionView.collectionViewLayout as? CardStackLayout {
@@ -26,14 +25,13 @@ class CardsDeckVC: UIViewController {
     private func configureCollectionView() {
         
         let layout = CardStackLayout()
-        //layout.scrollDirection = .horizontal
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout) // view.bound - why it is not working?
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
         collectionView.register(CardCell.self, forCellWithReuseIdentifier: CardCell.reuseIndentifier)
         
-        collectionView.backgroundColor = .systemGray
-        collectionView.fillSuperView(padding: .init(top: 10, left: 10, bottom: 10, right: 10))
+        collectionView.backgroundColor = .clear
+        collectionView.fillSuperView()
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -51,7 +49,7 @@ extension CardsDeckVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.reuseIndentifier, for: indexPath) as? CardCell else { fatalError("Can't create new cell") }
-        cell.set(sentence: "Some Text to Show. And very very long phrase!")
+        cell.set(sentence: "Some Text to Show. And very very long phrase! Yes very-very long freaking set of word about something really stupid...")
         return cell
     }
 }

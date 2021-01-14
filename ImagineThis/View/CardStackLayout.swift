@@ -39,7 +39,6 @@ class CardStackLayout: UICollectionViewLayout {
         
         switch gestureRecongnizer.state {
         case .changed:
-            print(xOffset)
             if let topCard = collectionView?.cellForItem(at: .init(item: 2, section: 0)) {
                 topCard.transform = CGAffineTransform(translationX: xOffset, y: 0)
             }
