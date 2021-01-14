@@ -25,6 +25,7 @@
 		5B33879625774ECB00BF835E /* SentenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33879525774ECB00BF835E /* SentenceManager.swift */; };
 		5B3387D2257FE8C700BF835E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3387D1257FE8C700BF835E /* CardView.swift */; };
 		5B3387D725800BBC00BF835E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3387D625800BBC00BF835E /* UIView+Ext.swift */; };
+		5B56B8DC25AFF273006C9496 /* CardStackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B56B8DB25AFF273006C9496 /* CardStackLayout.swift */; };
 		5B71BCC8258CFE80007AA659 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71BCC7258CFE80007AA659 /* CardCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		5B33879525774ECB00BF835E /* SentenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceManager.swift; sourceTree = "<group>"; };
 		5B3387D1257FE8C700BF835E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		5B3387D625800BBC00BF835E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		5B56B8DB25AFF273006C9496 /* CardStackLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStackLayout.swift; sourceTree = "<group>"; };
 		5B71BCC7258CFE80007AA659 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 		5B08B752256638130086F4B5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5B56B8DB25AFF273006C9496 /* CardStackLayout.swift */,
 				5B3387D1257FE8C700BF835E /* CardView.swift */,
 				5B338776256CC6CF00BF835E /* BGImageView.swift */,
 				5B33878525704D1F00BF835E /* Cells */,
@@ -243,6 +246,7 @@
 				5B33877B256F27FC00BF835E /* StartButton.swift in Sources */,
 				5B3387D725800BBC00BF835E /* UIView+Ext.swift in Sources */,
 				5B33878E25708E3400BF835E /* WordsData.swift in Sources */,
+				5B56B8DC25AFF273006C9496 /* CardStackLayout.swift in Sources */,
 				5B33878B25708D7500BF835E /* Category.swift in Sources */,
 				5B33877F256F467400BF835E /* Level.swift in Sources */,
 				5B71BCC8258CFE80007AA659 /* CardCell.swift in Sources */,

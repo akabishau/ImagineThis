@@ -11,8 +11,8 @@ class CardCell: UICollectionViewCell {
     
     static let reuseIndentifier = String(describing: CardCell.self)
     
-    let backgroundImageView = UIImageView()
-    let sentenceLabel = UILabel()
+    let backgroundImageView = UIImageView(frame: .zero)
+    let sentenceLabel = UILabel(frame: .zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,8 +31,8 @@ class CardCell: UICollectionViewCell {
     
     
     private func configure() {
-        addSubview(backgroundImageView)
-        addSubview(sentenceLabel)
+        contentView.addSubview(backgroundImageView)
+        contentView.addSubview(sentenceLabel)
         
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         sentenceLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -40,10 +40,18 @@ class CardCell: UICollectionViewCell {
         backgroundImageView.image = UIImage(named: "card")
         sentenceLabel.text = "some random text to show"
         
-        sentenceLabel.backgroundColor = .systemYellow
+        //sentenceLabel.backgroundColor = .systemGreen
+        sentenceLabel.textAlignment = .center
         sentenceLabel.numberOfLines = 0
         
         backgroundImageView.fillSuperView()
-        sentenceLabel.fillSuperView(padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        //sentenceLabel.fillSuperView(padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        let inset: CGFloat = 10
+        NSLayoutConstraint.activate([
+            sentenceLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
+            sentenceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
+            sentenceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
+            sentenceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)
+        ])
     }
 }
