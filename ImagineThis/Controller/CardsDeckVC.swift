@@ -15,16 +15,13 @@ class CardsDeckVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        
-        if let layout = collectionView.collectionViewLayout as? CardStackLayout {
-            layout.delegate = self
-        }
     }
     
     
     private func configureCollectionView() {
         
         let layout = CardStackLayout()
+        layout.delegate = self
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
