@@ -59,11 +59,12 @@ extension CardsDeckVC: UICollectionViewDelegate {
 
 extension CardsDeckVC: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewSize = collectionView.frame.size
-        let cellSize = CGSize(width: collectionViewSize.width * 0.9, height: collectionViewSize.height * 0.9)
-        return cellSize
-    }
+    // do it work with custom collection view layout object?
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let collectionViewSize = collectionView.frame.size
+//        let cellSize = CGSize(width: collectionViewSize.width * 0.5, height: collectionViewSize.height * 0.5)
+//        return cellSize
+//    }
     
 }
 

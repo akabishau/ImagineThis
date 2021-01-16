@@ -31,6 +31,7 @@ class CardCell: UICollectionViewCell {
     
     
     private func configure() {
+        // using self instead of content view?
         contentView.addSubview(backgroundImageView)
         contentView.addSubview(sentenceLabel)
         
@@ -38,7 +39,6 @@ class CardCell: UICollectionViewCell {
         sentenceLabel.translatesAutoresizingMaskIntoConstraints = false
         
         backgroundImageView.image = UIImage(named: "card")
-        sentenceLabel.text = "some random text to show"
         
         sentenceLabel.textAlignment = .center
         sentenceLabel.numberOfLines = 0

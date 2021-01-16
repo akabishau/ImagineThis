@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CardStackLayoutDelegate: class {
-    //func cardShouldRemove(_ flowLayout: CardStackLayout, indexPath: IndexPath)
+    //func cardShouldRemove(_ flowLayout: CardStackLayout, indexPath: IndexPath) // in tutorial
     func cardShouldRemove(_ flowLayout: CardStackLayout, cell: UICollectionViewCell)
 }
 
@@ -35,12 +35,13 @@ class CardStackLayout: UICollectionViewLayout {
         let translation = gestureRecongnizer.translation(in: collectionView)
         
         let xOffset = translation.x
+        let yOffset = translation.y
         let xMaxOffset = (collectionView?.frame.width ?? 0) * maxOffsetThreshold
         
         switch gestureRecongnizer.state {
         case .changed:
             if let topCard = collectionView?.cellForItem(at: .init(item: 2, section: 0)) {
-                topCard.transform = CGAffineTransform(translationX: xOffset, y: 0)
+                topCard.transform = CGAffineTransform(translationX: xOffset, y: yOffset)
             }
             if let nextCard = collectionView?.cellForItem(at: .init(item: 1, section: 0)) {
                 nextCard.alpha = 1
@@ -113,15 +114,31 @@ class CardStackLayout: UICollectionViewLayout {
 
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        print(#function)
+        
         let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         
         // all cells have the same frame as collection view
-        attributes.frame = collectionView?.bounds ?? .zero
+        //attributes.frame = collectionView?.bounds ?? .zero
+
+        // set the size and position of the cell relative to collection view size
+        // using bounds vs frame?
+        guard let collectionView = collectionView else { return  nil }
+        let cellWidth = collectionView.bounds.width / 3 * 2
+        let cellHeight = CGFloat(150)
+        let center = CGPoint(x: collectionView.bounds.width / 2, y: collectionView.bounds.height / 2)
+        
+        attributes.size = CGSize(width: cellWidth, height: cellHeight)
+        attributes.center = center
         
         // make the only top cell have alpha = 1 and 0 for others
         var isNotTop = false
-        if let numItems = collectionView?.numberOfItems(inSection: 0), numItems > 0 {
-            isNotTop = indexPath.row != numItems - 1
+//        if let numItems = collectionView?.numberOfItems(inSection: 0), numItems > 0 {
+//            isNotTop = indexPath.row != numItems - 1
+//        }
+        let numberOfItems = collectionView.numberOfItems(inSection: 0)
+        if numberOfItems > 0 {
+            isNotTop = indexPath.row != numberOfItems - 1
         }
         attributes.alpha = isNotTop ? 0 : 1
         
@@ -130,7 +147,8 @@ class CardStackLayout: UICollectionViewLayout {
     
     
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        //get all index paths for all the cells
+        print(#function)
+        // get all index paths for all the cells
         // loop through them and apply layout attributes for each item
         // return array of modified layout attributes
         

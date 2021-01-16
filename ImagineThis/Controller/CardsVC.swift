@@ -31,7 +31,8 @@ class CardsVC: UIViewController {
         
         grassImageView.translatesAutoresizingMaskIntoConstraints = false
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        
+        containerView.fillSuperView()
+        containerView.backgroundColor = .clear
         
         NSLayoutConstraint.activate([
             
@@ -40,10 +41,11 @@ class CardsVC: UIViewController {
             grassImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             grassImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
             
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            containerView.heightAnchor.constraint(equalToConstant: 150),
+//            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+//            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+//            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+//            containerView.heightAnchor.constraint(equalToConstant: 150),
+            
             
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
