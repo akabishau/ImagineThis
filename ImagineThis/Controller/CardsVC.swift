@@ -14,12 +14,14 @@ class CardsVC: UIViewController {
     let grassImageView = UIImageView(image: UIImage(named: "grass"))
     let backButton = BackButton(frame: .zero)
     
+    var category: Category!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutUI()
         addActionToBackButton()
         add(childVC: CardsDeckVC(), to: containerView)
+        print(category!)
     }
     
     

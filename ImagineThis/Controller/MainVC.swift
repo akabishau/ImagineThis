@@ -9,6 +9,7 @@ import UIKit
 
 class MainVC: UIViewController {
 
+    // TODO: - Redo level buttons to collection view
     lazy var backgroundImageView = BGImageView(frame: view.bounds)
     let buttonsStackView = UIStackView()
     let easyLevelButton = LevelButton(level: .easy)
@@ -97,10 +98,21 @@ class MainVC: UIViewController {
         }
         
         let cardVC = CardsVC()
+        cardVC.category = getCategory()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             //TODO: - confirm with the client removing navigation animation
             self.navigationController?.pushViewController(cardVC, animated: false)
         }
+    }
+    
+    
+    private func getCategory() -> Category? {
+        guard let visibleCategoryIndexPath = collectionView.indexPathsForVisibleItems.first else {
+            print("can't get category index path")
+            return nil
+        }
+        return categories[visibleCategoryIndexPath.item]
     }
 
     
