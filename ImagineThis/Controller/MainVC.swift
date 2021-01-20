@@ -18,6 +18,7 @@ class MainVC: UIViewController {
     let startButton = StartButton()
     
     let categories = Category.allCases
+    let levels = Level.allCases
     
     enum Section { case main }
     
@@ -85,6 +86,7 @@ class MainVC: UIViewController {
     }
     
     
+    //TODO: - fix ability to double click the button
     @objc private func selectLevel(sender: UIButton) {
         let buttons = buttonsStackView.arrangedSubviews as! [UIButton]
         buttons.forEach { $0.isSelected = false }
@@ -99,11 +101,19 @@ class MainVC: UIViewController {
         
         let cardVC = CardsVC()
         cardVC.category = getCategory()
+        cardVC.level = getLevel()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             //TODO: - confirm with the client removing navigation animation
             self.navigationController?.pushViewController(cardVC, animated: false)
         }
+    }
+    
+    
+    private func getLevel() -> Level? {
+        let levelButtons = buttonsStackView.arrangedSubviews as! [UIButton]
+        let selectedLevelButtonIndex = levelButtons.firstIndex { $0.isSelected }
+        return levels[selectedLevelButtonIndex!]
     }
     
     

@@ -15,6 +15,7 @@ class CardsVC: UIViewController {
     let backButton = BackButton(frame: .zero)
     
     var category: Category!
+    var level: Level!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class CardsVC: UIViewController {
         addActionToBackButton()
         add(childVC: CardsDeckVC(), to: containerView)
         print(category!)
+        print(level!)
     }
     
     

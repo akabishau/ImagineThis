@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum Level: String {
+enum Level: String, CaseIterable {
     case easy
     case normal
     case hard
