@@ -10,7 +10,7 @@ import UIKit
 class CardsVC: UIViewController {
 
     lazy var backgroundImageView = BGImageView(frame: view.bounds)
-    let selectionsView = SelectionsStackView()
+    var selectionsView: SelectionsStackView!
     let containerView = UIView()
     let grassImageView = UIImageView(image: UIImage(named: "grass"))
     let backButton = BackButton(frame: .zero)
@@ -20,11 +20,10 @@ class CardsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectionsView = SelectionsStackView(category: category, level: level)
         layoutUI()
         addActionToBackButton()
         add(childVC: CardsDeckVC(), to: containerView)
-        print(category!)
-        print(level!)
     }
     
     

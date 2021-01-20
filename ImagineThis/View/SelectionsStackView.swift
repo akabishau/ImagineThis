@@ -15,12 +15,20 @@ class SelectionsStackView: UIStackView {
     
     
     override init(frame: CGRect) {
-        super.init(frame: .zero)
+        super.init(frame: frame)
         configure()
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    init(category: Category, level: Level) {
+        super.init(frame: .zero)
+        categoryImageView.image = category.breadCrumbsImage
+        levelImageView.image = level.breadCrumbsImage
+        configure()
     }
     
     

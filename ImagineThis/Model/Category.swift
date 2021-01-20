@@ -14,4 +14,8 @@ enum Category: String, CaseIterable {
     var image: UIImage? {
         return UIImage(named: self.rawValue)
     }
+    
+    var breadCrumbsImage: UIImage? {
+        return UIImage(named: "bc_\(self.rawValue)")
+    }
 }

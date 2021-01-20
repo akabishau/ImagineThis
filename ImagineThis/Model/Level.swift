@@ -20,4 +20,8 @@ enum Level: String, CaseIterable {
     var selectedImage: UIImage? {
         return UIImage(named: "\(self.rawValue)_selected")
     }
+    
+    var breadCrumbsImage: UIImage? {
+        return UIImage(named: "bc_\(self.rawValue)")
+    }
 }
