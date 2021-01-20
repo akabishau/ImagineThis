@@ -10,6 +10,7 @@ import UIKit
 class CardsVC: UIViewController {
 
     lazy var backgroundImageView = BGImageView(frame: view.bounds)
+    let selectionsView = SelectionsStackView()
     let containerView = UIView()
     let grassImageView = UIImageView(image: UIImage(named: "grass"))
     let backButton = BackButton(frame: .zero)
@@ -29,6 +30,7 @@ class CardsVC: UIViewController {
     
     private func layoutUI() {
         view.addSubview(backgroundImageView)
+        view.addSubview(selectionsView)
         view.addSubview(containerView)
         view.addSubview(grassImageView)
         view.addSubview(backButton)
@@ -43,13 +45,18 @@ class CardsVC: UIViewController {
             grassImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             grassImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             grassImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            grassImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            grassImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4),
             
 //            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
 //            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
 //            containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 //            containerView.heightAnchor.constraint(equalToConstant: 150),
             
+            // position and size based on card collection view current height of 150
+            selectionsView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            selectionsView.heightAnchor.constraint(equalToConstant: 40),
+            selectionsView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            selectionsView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
             
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             backButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
