@@ -15,6 +15,7 @@ class MainVC: UIViewController {
     let easyLevelButton = LevelButton(level: .easy)
     let normalLevelButton = LevelButton(level: .normal)
     let hardLevelButton = LevelButton(level: .hard)
+    let categoryTitleView = UIImageView(frame: .zero)
     let startButton = StartButton()
     
     let categories = Category.allCases
@@ -41,7 +42,11 @@ class MainVC: UIViewController {
         view.addSubview(backgroundImageView)
         view.addSubview(buttonsStackView)
         view.addSubview(collectionView)
+        view.addSubview(categoryTitleView)
         view.addSubview(startButton)
+        
+        categoryTitleView.translatesAutoresizingMaskIntoConstraints = false
+        categoryTitleView.image = UIImage(named: "title_horror")
         
         let padding: CGFloat = 20
         
@@ -55,6 +60,11 @@ class MainVC: UIViewController {
             collectionView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
             collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5),
+            
+            categoryTitleView.bottomAnchor.constraint(equalTo: collectionView.topAnchor),
+            categoryTitleView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            categoryTitleView.heightAnchor.constraint(equalToConstant: 40),
+            categoryTitleView.widthAnchor.constraint(equalToConstant: 150),
             
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding * 3),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding * 3),
@@ -137,7 +147,7 @@ class MainVC: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .clear
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIndentifier)
-        
+        //collectionView.delegate = self
         configureDataSource()
     }
     
@@ -152,6 +162,16 @@ class MainVC: UIViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
+        section.visibleItemsInvalidationHandler = { visibleItems, scrollOffset, layoutEnvironment in
+            print("#visibleItemsInvalidationHandler")
+            if let categoryIndex = visibleItems.first?.indexPath.item {
+                print(categoryIndex)
+                self.categoryTitleView.image = self.categories[categoryIndex].titleImage
+                print("here")
+            } else {
+                print("doesn't work")
+            }
+        }
         
         
         return UICollectionViewCompositionalLayout(section: section)
@@ -176,4 +196,15 @@ class MainVC: UIViewController {
         datasource.apply(initialSnapshot, animatingDifferences: false, completion: nil)
     }
 }
+
+
+//extension MainVC: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        print(#function)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+//        print(#function)
+//    }
+//}
 
