@@ -20,6 +20,7 @@ class MainVC: UIViewController {
     
     let pageControl: UIPageControl = {
         let pageControl = UIPageControl()
+        //TODO: - get rid off hardcoded value
         pageControl.numberOfPages = 4
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         return pageControl
