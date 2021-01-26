@@ -23,6 +23,7 @@ struct SentenceManager {
             case (.normal, .urban): return generateUrbanSentence()
             case (.hard, .horror): return generateHorrorSentence()
             case (.hard, .urban): return generateUrbanSentence()
+        default: return "Didn't generate the sentense"
         }
     }
     

@@ -10,6 +10,8 @@ import UIKit
 enum Category: String, CaseIterable {
     case horror
     case urban
+    case magic
+    case random
     
     var image: UIImage? {
         return UIImage(named: self.rawValue)
