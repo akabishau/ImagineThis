@@ -18,6 +18,13 @@ class MainVC: UIViewController {
     let categoryTitleView = UIImageView(frame: .zero)
     let startButton = StartButton()
     
+    let pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.numberOfPages = 4
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        return pageControl
+    }()
+    
     let categories = Category.allCases
     let levels = Level.allCases
     
@@ -43,10 +50,10 @@ class MainVC: UIViewController {
         view.addSubview(buttonsStackView)
         view.addSubview(collectionView)
         view.addSubview(categoryTitleView)
+        view.addSubview(pageControl)
         view.addSubview(startButton)
         
         categoryTitleView.translatesAutoresizingMaskIntoConstraints = false
-        categoryTitleView.image = UIImage(named: "title_horror")
         
         let padding: CGFloat = 20
         
@@ -69,7 +76,12 @@ class MainVC: UIViewController {
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding * 3),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding * 3),
             startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -padding * 2),
-            startButton.heightAnchor.constraint(equalToConstant: 80)
+            startButton.heightAnchor.constraint(equalToConstant: 80),
+            
+            pageControl.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -20),
+            pageControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            pageControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
+            pageControl.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -146,6 +158,7 @@ class MainVC: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .clear
+        collectionView.alwaysBounceVertical = false
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: CategoryCell.reuseIndentifier)
         //collectionView.delegate = self
         configureDataSource()
@@ -162,17 +175,22 @@ class MainVC: UIViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .paging
-        section.visibleItemsInvalidationHandler = { visibleItems, scrollOffset, layoutEnvironment in
-            print("#visibleItemsInvalidationHandler")
-            if let categoryIndex = visibleItems.first?.indexPath.item {
-                print(categoryIndex)
-                self.categoryTitleView.image = self.categories[categoryIndex].titleImage
-                print("here")
+        
+        section.visibleItemsInvalidationHandler = { [weak self] _, scrollOffset, _ in
+            guard let self = self else { return }
+            let size = Float(self.collectionView.contentSize.width)
+            let offset = Float(scrollOffset.x)
+            if size > 0 && offset >= 0 {
+                // TODO: - when scrolling backwards the title and page control are updated too soon
+                // check the floorf function mechanics
+                let currentPage = Int(floorf(offset / size))
+                self.pageControl.currentPage = currentPage
+                self.categoryTitleView.image = self.categories[currentPage].titleImage
             } else {
-                print("doesn't work")
+                self.pageControl.currentPage = 0
+                self.categoryTitleView.image = self.categories[0].titleImage
             }
         }
-        
         
         return UICollectionViewCompositionalLayout(section: section)
     }
@@ -196,15 +214,3 @@ class MainVC: UIViewController {
         datasource.apply(initialSnapshot, animatingDifferences: false, completion: nil)
     }
 }
-
-
-//extension MainVC: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        print(#function)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-//        print(#function)
-//    }
-//}
-
