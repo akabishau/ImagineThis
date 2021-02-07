@@ -9,17 +9,24 @@ import UIKit
 
 class CardsDeckVC: UIViewController {
     
+    
+    enum Section { case main }
+    var count = 3
+    var sentences = ["3", "2", "1"]
+    
     var collectionView: UICollectionView!
-
+    var dataSource: UICollectionViewDiffableDataSource<Section, String>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        configureDataSource()
+        updateData()
     }
     
     
     private func configureCollectionView() {
-        
+        print(#function)
         let layout = CardStackLayout()
         layout.delegate = self
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -30,41 +37,24 @@ class CardsDeckVC: UIViewController {
         collectionView.backgroundColor = .clear
         collectionView.fillSuperView()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
     }
-}
-
-
-extension CardsDeckVC: UICollectionViewDataSource {
+     
     
-    
-    // TODO: Replace the hardcoded value
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, sentence) -> UICollectionViewCell? in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.reuseIndentifier, for: indexPath) as? CardCell else { fatalError("Can't create new cell") }
+            cell.set(sentence: sentence)
+            return cell
+        })
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.reuseIndentifier, for: indexPath) as? CardCell else { fatalError("Can't create new cell") }
-        cell.set(sentence: "Some Text to Show. And very very long phrase! Yes very-very long freaking set of word about something really stupid...")
-        return cell
+    
+    private func updateData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(sentences, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
     }
-}
-
-
-extension CardsDeckVC: UICollectionViewDelegate {
-    
-}
-
-
-extension CardsDeckVC: UICollectionViewDelegateFlowLayout {
-    
-    // do it work with custom collection view layout object?
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let collectionViewSize = collectionView.frame.size
-//        let cellSize = CGSize(width: collectionViewSize.width * 0.5, height: collectionViewSize.height * 0.5)
-//        return cellSize
-//    }
     
 }
 
@@ -72,8 +62,9 @@ extension CardsDeckVC: UICollectionViewDelegateFlowLayout {
 extension CardsDeckVC: CardStackLayoutDelegate {
     func cardShouldRemove(_ flowLayout: CardStackLayout, cell: UICollectionViewCell) {
         print(#function)
-        //cardsData.removeLast()
-        //cardsData.insertNewCard()
-        collectionView.reloadData()
+        sentences.removeLast()
+        count += 1
+        sentences.insert(String(count), at: 0)
+        updateData()
     }
 }
