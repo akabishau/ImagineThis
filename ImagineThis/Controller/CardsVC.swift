@@ -23,7 +23,7 @@ class CardsVC: UIViewController {
         selectionsView = SelectionsStackView(category: category, level: level)
         layoutUI()
         addActionToBackButton()
-        add(childVC: CardsDeckVC(), to: containerView)
+        add(childVC: CardsDeckVC(sentenceManager: SentenceManager(category: category, level: level)), to: containerView)
     }
     
     
