@@ -67,8 +67,11 @@ class CardsDeckVC: UIViewController {
     }
     
     
+//    private func generateSentence() {
+//        sentences.insert(sentenceManager.generateSentance(for: sentenceManager.category, level: sentenceManager.level), at: 0)
+//    }
     private func generateSentence() {
-        sentences.insert(sentenceManager.generateSentance(for: sentenceManager.category, level: sentenceManager.level), at: 0)
+        sentences.insert(sentenceManager.generateSentence(), at: 0)
     }
     
 }

@@ -9,13 +9,27 @@ import Foundation
 
 struct WordsData {
     
-    let horrorNouns = ["death", "poltergeist", "demon", "crow", "hell", "graveyard", "monster", "vampire", "spider", "pumpkin", "skull", "creature", "brains", "worms", "haunted house", "goblin", "witch", "spider", "skeleton", "zombie", "dead body", "cemetery", "ghost", "owl"]
+    let verbs: [Category: [String]] = [
+        .random: ["randomVerb1", "randomVerb2", "randomVerb4", "randomVerb4", "randomVerb5"],
+        .horror: ["horrorVerb1", "horrorVerb2", "horrorVerb3", "horrorVerb4", "horrorVerb5"],
+        .urban: ["urbanVerb1", "urbanVerb2", "urbanVerb3", "urbanVerb4", "urbanVerb5"],
+        .magic: ["magicVerb1", "magicVerb2", "magicVerb3", "magicVerb4", "magicVerb5"]
+    ]
     
-    let urbanNouns = ["postman", "bartender", "traffic", "trolley", "roof", "reporter", "smell", "human", "children", "pigeon", "crowd", "skyscraper", "uber", "taxi", "museum", "bike", "fastfood", "shop"]
     
-    let verbs = ["dances", "drinks", "kisses", "fights", "cries", "launch", "offend", "correct", "applaud", "crack", "listen", "smell", "shave", "help", "camp", "battle", "knock", "tickle", "enjoy", "think", "run", "sit", "sleep", "order", "breath", "read", "smoke"]
+    let subjects: [Category: [String]] = [
+        .random: ["randomSubject1", "randomSubject2", "randomSubject3", "randomSubject4", "randomSubject5"],
+        .horror: ["horrorSubject1", "horrorSubject2", "horrorSubject3", "horrorSubject4", "horrorSubject5"],
+        .urban: ["urbanSubject1", "urbanSubject2", "urbanSubject3", "urbanSubject4", "urbanSubject5"],
+        .magic: ["magicSubject1", "magicSubject2", "magicSubject3", "magicSubject4", "magicSubject5"]
+    ]
     
-    let adjectives = ["swift", "ready", "light", "three", "warm", "sleepy", "able", "habitual", "loving", "useful", "difficult", "united", "highfalutin", "lowly", "tough", "plant", "painstaking", "hysterical", "black-and-white", "responsible", "substantial", "aware", "gabby", "magical", "numerous", "worthless", "emotional", "holistic", "impartial", "axiomatic", "accessible", "wacky", "nice", "wonderful", "shiny", "disturbed", "horrible", "handsome", "spiky", "auspicious", "redundant", "asleep", "few", "naughty", "caring", "dark", "fragile", "ripe", "neat", "frightened"]
     
-    let places = ["on the street", "in the mirror", "in aquarium", "in the house", "in its mind", "on the tree", "in the forest", "in the pool", "in front of church", "on TV", "in the movie", "in the air", "under the bed", "in the closet", "under water", "inside the bottle"]
+    
+    let objects: [Category: [String]] = [
+        .random: ["randomObject1", "randomObject2", "randomObject3", "randomObject4", "randomObject5"],
+        .horror: ["horrorObject1", "horrorObject2", "horrorObject3", "horrorObject4", "horrorObject5"],
+        .urban: ["urbanObject1", "urbanObject2", "urbanObject3", "urbanObject4", "urbanObject5"],
+        .magic: ["magicObject1", "magicObject2", "magicObject3", "magicObject4", "magicObject5"]
+    ]
 }

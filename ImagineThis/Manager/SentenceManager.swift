@@ -14,56 +14,43 @@ struct SentenceManager {
     var level: Level!
     
     
-    func generateSentance(for category: Category, level: Level) -> String {
-        switch (level, category) {
-            case (.easy, .horror): return generateEasyHorrorSentence()
-            case (.easy, .urban): return generateEasyUrbanSentence()
-                // the same implementation for normal and hard for now
-            case (.normal, .horror): return generateHorrorSentence()
-            case (.normal, .urban): return generateUrbanSentence()
-            case (.hard, .horror): return generateHorrorSentence()
-            case (.hard, .urban): return generateUrbanSentence()
-        default: return "Didn't generate the sentense"
+    struct Sentence {
+        var article: Article?
+        var adjective: String?
+        var subject: String
+        var verb: String
+        var object: String
+        let space = " + "
+        
+        func buildSentence(for level: Level) -> String {
+            switch level {
+            case .easy: return subject + space + verb + space + object
+            case .normal: return "" // replace with real one
+            case .hard: return "" // replace with real one
+            }
         }
     }
     
-    
-    func generateEasyUrbanSentence() -> String {
-        let noun = words.urbanNouns[Int.random(in: 0..<words.urbanNouns.count)]
-        let verb = words.verbs[Int.random(in: 0..<words.verbs.count)]
-        let place = words.places[Int.random(in: 0..<words.places.count)]
+    func generateSentence() -> String {
+        let subject = words.subjects[category]?.randomElement()
+        let verb = words.verbs[category]?.randomElement()
+        let object = words.objects[category]?.randomElement()
         
-        return noun + " " + verb + " " + place
+        
+        let sentence = Sentence(article: nil, adjective: nil, subject: subject!, verb: verb!, object: object!)
+        
+        
+        return sentence.buildSentence(for: level)
     }
     
     
-    func generateEasyHorrorSentence() -> String {
-        let noun = words.horrorNouns[Int.random(in: 0..<words.horrorNouns.count)]
-        let verb = words.verbs[Int.random(in: 0..<words.verbs.count)]
-        let place = words.places[Int.random(in: 0..<words.places.count)]
-        
-        return noun + " " + verb + " " + place
+    // article logic
+    enum Article: String {
+        case a // doesn't start with vowel
+        case an // starts with vowel
+        case the //specific words from data set
     }
-    
-    
-    func generateUrbanSentence() -> String {
-        let adjuective = words.adjectives[Int.random(in: 0..<words.adjectives.count)]
-        let noun = words.urbanNouns[Int.random(in: 0..<words.urbanNouns.count)]
-        let verb = words.verbs[Int.random(in: 0..<words.verbs.count)]
-        let noun2 = words.urbanNouns[Int.random(in: 0..<words.urbanNouns.count)]
-        let place = words.places[Int.random(in: 0..<words.places.count)]
-        
-        return adjuective + " " + noun + " " + verb + " " + noun2 + " " + place
-    }
-    
-    
-    func generateHorrorSentence() -> String {
-        let adjuective = words.adjectives[Int.random(in: 0..<words.adjectives.count)]
-        let noun = words.horrorNouns[Int.random(in: 0..<words.horrorNouns.count)]
-        let verb = words.verbs[Int.random(in: 0..<words.verbs.count)]
-        let noun2 = words.horrorNouns[Int.random(in: 0..<words.horrorNouns.count)]
-        let place = words.places[Int.random(in: 0..<words.places.count)]
-        
-        return adjuective + " " + noun + " " + verb + " " + noun2 + " " + place
+    private func defineAnArticle(word: String) -> Article {
+        return .a
     }
 }
