@@ -16,28 +16,38 @@ struct SentenceManager {
     
     struct Sentence {
         var article: Article?
-        var adjective: String?
+        var adjectiveSubject: String
         var subject: String
         var verb: String
+        var adjectiveObject: String
         var object: String
         let space = " + "
         
         func buildSentence(for level: Level) -> String {
             switch level {
-            case .easy: return subject + space + verb + space + object
-            case .normal: return "" // replace with real one
-            case .hard: return "" // replace with real one
+            case .easy:
+                return subject + space + verb + space + object
+            case .normal:
+                return adjectiveSubject + space + subject + space + verb + space + adjectiveObject + space + object
+            case .hard:
+                return "" // replace with real one
             }
         }
     }
     
     func generateSentence() -> String {
         let subject = words.subjects[category]?.randomElement()
+        let adjustiveSubject = words.adjectives[category]?.randomElement()
         let verb = words.verbs[category]?.randomElement()
+        let adjectiveObject = words.adjectives[category]?.randomElement()
         let object = words.objects[category]?.randomElement()
         
         
-        let sentence = Sentence(article: nil, adjective: nil, subject: subject!, verb: verb!, object: object!)
+        let sentence = Sentence(article: nil,
+                                adjectiveSubject: adjustiveSubject!,
+                                subject: subject!, verb: verb!,
+                                adjectiveObject: adjectiveObject!,
+                                object: object!)
         
         
         return sentence.buildSentence(for: level)

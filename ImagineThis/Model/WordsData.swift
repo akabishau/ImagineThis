@@ -32,4 +32,12 @@ struct WordsData {
         .urban: ["urbanObject1", "urbanObject2", "urbanObject3", "urbanObject4", "urbanObject5"],
         .magic: ["magicObject1", "magicObject2", "magicObject3", "magicObject4", "magicObject5"]
     ]
+    
+    
+    let adjectives: [Category: [String]] = [
+        .random: ["randomAdjective1", "randomAdjective2", "randomAdjective3", "randomAdjective4", "randomAdjective5"],
+        .horror: ["horrorAdjective1", "horrorAdjective2", "horrorAdjective3", "horrorAdjective4", "horrorAdjective5"],
+        .urban: ["urbanAdjective1", "urbanAdjective2", "urbanAdjective3", "urbanAdjective4", "urbanAdjective5"],
+        .magic: ["magicAdjective1", "magicAdjective2", "magicAdjective3", "magicAdjective4", "magicAdjective5"]
+    ]
 }
