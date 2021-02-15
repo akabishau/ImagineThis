@@ -21,6 +21,7 @@ struct SentenceManager {
         var verb: String
         var adjectiveObject: String
         var object: String
+        var situation: String
         let space = " + "
         
         func buildSentence(for level: Level) -> String {
@@ -30,7 +31,7 @@ struct SentenceManager {
             case .normal:
                 return adjectiveSubject + space + subject + space + verb + space + adjectiveObject + space + object
             case .hard:
-                return "" // replace with real one
+                return adjectiveSubject + space + subject + space + verb + space + adjectiveObject + space + object + space + situation
             }
         }
     }
@@ -41,13 +42,15 @@ struct SentenceManager {
         let verb = words.verbs[category]?.randomElement()
         let adjectiveObject = words.adjectives[category]?.randomElement()
         let object = words.objects[category]?.randomElement()
+        let situation = words.situations[category]?.randomElement()
         
         
         let sentence = Sentence(article: nil,
                                 adjectiveSubject: adjustiveSubject!,
                                 subject: subject!, verb: verb!,
                                 adjectiveObject: adjectiveObject!,
-                                object: object!)
+                                object: object!,
+                                situation: situation!)
         
         
         return sentence.buildSentence(for: level)
