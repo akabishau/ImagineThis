@@ -15,23 +15,25 @@ struct SentenceManager {
     
     
     struct Sentence {
-        var article: Article?
+        var article: Article
         var adjectiveSubject: String
         var subject: String
         var verb: String
         var adjectiveObject: String
         var object: String
         var situation: String
-        let space = " + "
+        let space = " "
+        let period = "."
+        
         
         func buildSentence(for level: Level) -> String {
             switch level {
             case .easy:
-                return subject + space + verb + space + object
+                return article.defineArticle(word: subject).rawValue.capitalized + space + subject + space + verb + space + article.defineArticle(word: object).rawValue + space + object + period
             case .normal:
-                return adjectiveSubject + space + subject + space + verb + space + adjectiveObject + space + object
+                return article.defineArticle(word: adjectiveSubject).rawValue.capitalized + space + adjectiveSubject + space + subject + space + verb + space + article.defineArticle(word: adjectiveObject).rawValue + space + adjectiveObject + space + object + period
             case .hard:
-                return adjectiveSubject + space + subject + space + verb + space + adjectiveObject + space + object + space + situation
+                return article.defineArticle(word: adjectiveSubject).rawValue.capitalized + space + adjectiveSubject + space + subject + space + verb + space + article.defineArticle(word: adjectiveObject).rawValue + space + adjectiveObject + space + object + space + situation + period
             }
         }
     }
@@ -45,9 +47,10 @@ struct SentenceManager {
         let situation = words.situations[category]?.randomElement()
         
         
-        let sentence = Sentence(article: nil,
+        let sentence = Sentence(article: .none,
                                 adjectiveSubject: adjustiveSubject!,
-                                subject: subject!, verb: verb!,
+                                subject: subject!,
+                                verb: verb!,
                                 adjectiveObject: adjectiveObject!,
                                 object: object!,
                                 situation: situation!)
@@ -56,14 +59,30 @@ struct SentenceManager {
         return sentence.buildSentence(for: level)
     }
     
+}
+// article logic
+enum Article: String {
+    case a // doesn't start with vowel
+    case an // starts with vowel
+    case the //specific words from data set
+    case none = ""
     
-    // article logic
-    enum Article: String {
-        case a // doesn't start with vowel
-        case an // starts with vowel
-        case the //specific words from data set
-    }
-    private func defineAnArticle(word: String) -> Article {
-        return .a
+    func defineArticle(word: String) -> Article {
+        
+        // check if subject of object is the one of "the" words
+        // get first letter
+        // check is it one of five vowels
+        
+        let words = WordsData()
+        if let exception = words.articlesExceptions[word] {
+            return exception
+        }
+        
+        let first = word[word.startIndex]
+        
+        switch first {
+        case "a", "e", "o", "u", "y": return .an
+        default: return .a
+        }
     }
 }

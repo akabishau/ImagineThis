@@ -48,4 +48,12 @@ struct WordsData {
         .urban: ["urbanSituation1", "urbanSituation2", "urbanSituation3", "urbanSituation4", "urbanSituation5"],
         .magic: ["magicSituation1", "magicSituation2", "magicSituation3", "magicSituation4", "magicSituation5"]
     ]
+    
+    
+    let articlesExceptions: [String: Article] = [
+        "Sun": .the,
+        "hour": .an,
+        "horrorSubject1": .an,
+        "horrorAdjective1": .an,
+        "horrorObject1": .an]
 }
