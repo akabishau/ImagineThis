@@ -5,7 +5,7 @@
 //  Created by Aleksey on 1201..20.
 //
 
-import Foundation
+import UIKit
 
 struct SentenceManager {
     
@@ -38,7 +38,8 @@ struct SentenceManager {
         }
     }
     
-    func generateSentence() -> String {
+    func generateSentence() -> Card {
+        print(#function)
         let subject = words.subjects[category]?.randomElement()
         let adjustiveSubject = words.adjectives[category]?.randomElement()
         let verb = words.verbs[category]?.randomElement()
@@ -55,11 +56,34 @@ struct SentenceManager {
                                 object: object!,
                                 situation: situation!)
         
+        let angle = generateRandomAngle(for: 10)
+        let text = sentence.buildSentence(for: level)
         
-        return sentence.buildSentence(for: level)
+        return Card(text: text, rotationAngle: angle)
+    }
+    
+    
+    func generateRandomAngle(for angle: Int) -> CGFloat {
+        print(#function)
+        let minimum = -CGFloat(angle) * .pi / 180
+        let maximum = CGFloat(angle) * .pi / 180
+        let randomAngle = CGFloat.random(in: minimum...maximum)
+        return randomAngle
     }
     
 }
+
+struct Card: Hashable {
+    var text: String
+    var rotationAngle: CGFloat
+    
+    init(text: String, rotationAngle: CGFloat) {
+        self.text = text
+        self.rotationAngle = rotationAngle
+    }
+}
+
+
 // article logic
 enum Article: String {
     case a // doesn't start with vowel

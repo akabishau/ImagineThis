@@ -21,10 +21,10 @@ class CardsDeckVC: UIViewController {
     }
     
     enum Section { case main }
-    var sentences: [String] = []
+    var sentences: [Card] = [] //TODO: - rename to cards in case of keeping this approach
     
     var collectionView: UICollectionView!
-    var dataSource: UICollectionViewDiffableDataSource<Section, String>!
+    var dataSource: UICollectionViewDiffableDataSource<Section, Card>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,16 +51,17 @@ class CardsDeckVC: UIViewController {
      
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, String>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, sentence) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, Card>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, sentence) -> UICollectionViewCell? in
+            
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardCell.reuseIndentifier, for: indexPath) as? CardCell else { fatalError("Can't create new cell") }
-            cell.set(sentence: sentence)
+            cell.set(sentence: sentence.text, rotationAngle: sentence.rotationAngle)
             return cell
         })
     }
     
     
     private func updateData() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, String>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Card>()
         snapshot.appendSections([.main])
         snapshot.appendItems(sentences, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: false, completion: nil)

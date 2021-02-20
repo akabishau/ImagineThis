@@ -13,6 +13,7 @@ class CardCell: UICollectionViewCell {
     
     let backgroundImageView = UIImageView(frame: .zero)
     let sentenceLabel = UILabel(frame: .zero)
+    var rotationAngle: CGFloat = 0.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,8 +26,9 @@ class CardCell: UICollectionViewCell {
     
     
     //TODO: - struct sentence replaces the string?
-    func set(sentence: String) {
+    func set(sentence: String, rotationAngle: CGFloat) {
         sentenceLabel.text = sentence
+        transform = CGAffineTransform(rotationAngle: rotationAngle)
     }
     
     

@@ -17,7 +17,7 @@ class CardStackLayout: UICollectionViewLayout {
     weak var delegate: CardStackLayoutDelegate?
 
     private let maxOffsetThreshold: CGFloat = 0.3
-    private let animationDuration: TimeInterval = 0.15
+    private let animationDuration: TimeInterval = 0.25
     typealias CellWithIndexPath = (cell: UICollectionView, indexPath: IndexPath)
     // topCellWithIndexPath: CellWithIndexPath { }
     // bottomCellWithIndexPath: CellWithIndexPath { }
@@ -44,7 +44,9 @@ class CardStackLayout: UICollectionViewLayout {
                 topCard.transform = CGAffineTransform(translationX: xOffset, y: yOffset)
             }
             if let nextCard = collectionView?.cellForItem(at: .init(item: 1, section: 0)) {
-                nextCard.alpha = 1
+                UIView.animate(withDuration: animationDuration) {
+                    nextCard.alpha = 1
+                }
             }
         case .ended:
             print("ended")
@@ -58,12 +60,22 @@ class CardStackLayout: UICollectionViewLayout {
                 }
                 if let nextCard = collectionView?.cellForItem(at: .init(item: 1, section: 0)) {
                     // animate into top card position
-                    animateIntoPosition(cell: nextCard)
+                    //TODO: - connect transparancy animation with pan gesture distance
+                    UIView.animate(withDuration: animationDuration) {
+                        nextCard.alpha = 1
+                    }
                 }
             } else {
                 if let topCard = collectionView?.cellForItem(at: .init(item: 2, section: 0)) {
                     // animate back to a primary position
                     animateIntoPosition(cell: topCard)
+                }
+                
+                // returning second card transparancy back - move to animateToPosition function
+                if let nextCard = collectionView?.cellForItem(at: .init(item: 1, section: 0)) {
+                    UIView.animate(withDuration: animationDuration) {
+                        nextCard.alpha = 0.75
+                    }
                 }
             }
             
@@ -75,15 +87,16 @@ class CardStackLayout: UICollectionViewLayout {
     
     
     private func animateIntoPosition(cell: UICollectionViewCell) {
+        print(#function)
         UIView.animate(withDuration: animationDuration) {
+            //TODO - Animate to the current rotation angle value, not identity - access to data?
             cell.transform = CGAffineTransform.identity
-            cell.alpha = 1
         }
     }
     
     
     private func animateAndRemove(left: Bool, cell: UICollectionViewCell, completion: (() -> ())?) {
-        
+        print(#function)
         let screenWidth = UIScreen.main.bounds.width
         
         UIView.animate(withDuration: animationDuration) {
@@ -93,8 +106,6 @@ class CardStackLayout: UICollectionViewLayout {
             completion?()
             print("need to update the data source")
         }
-
-        
     }
     
     
@@ -138,9 +149,9 @@ class CardStackLayout: UICollectionViewLayout {
 //        }
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         if numberOfItems > 0 {
-            isNotTop = indexPath.row != numberOfItems - 1
+            isNotTop = indexPath.item != numberOfItems - 1
         }
-        attributes.alpha = isNotTop ? 0 : 1
+        attributes.alpha = isNotTop ? 0.75 : 1
         
         return attributes
     }
